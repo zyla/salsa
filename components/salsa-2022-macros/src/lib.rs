@@ -33,6 +33,7 @@ pub(crate) fn literal(ident: &proc_macro2::Ident) -> proc_macro2::Literal {
 mod accumulator;
 mod configuration;
 mod db;
+mod debug_with_db;
 mod input;
 mod interned;
 mod jar;
@@ -70,4 +71,9 @@ pub fn input(args: TokenStream, input: TokenStream) -> TokenStream {
 #[proc_macro_attribute]
 pub fn tracked(args: TokenStream, input: TokenStream) -> TokenStream {
     tracked::tracked(args, input)
+}
+
+#[proc_macro_derive(DebugWithDb)]
+pub fn derive_debug_with_db(input: TokenStream) -> TokenStream {
+    debug_with_db::derive_debug_with_db(input)
 }
